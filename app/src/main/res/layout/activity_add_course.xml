@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tv_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="10dp"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_course" />
+
+            <TextView
+                android:id="@+id/tv_welcome"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/please_add_you_yoga_course_here" />
+
+            <TextView
+                android:id="@+id/tv_c_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_welcome"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/course_name" />
+
+            <EditText
+                android:id="@+id/et_c_name"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:paddingStart="5dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_name"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_round_border_et"
+                android:layout_marginStart="16dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/course_name" />
+
+            <TextView
+                android:id="@+id/tv_c_days"
+                app:layout_constraintTop_toBottomOf="@id/et_c_name"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Days sessions to be held" />
+
+            <Button
+                android:id="@+id/cbtn_mon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/circle_button"
+                android:text="Mon"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/cbtn_tue"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/circle_button"
+                android:text="Tue"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
+                app:layout_constraintStart_toEndOf="@id/cbtn_mon"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/cbtn_wed"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/circle_button"
+                android:text="Wed"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
+                app:layout_constraintStart_toEndOf="@id/cbtn_tue"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/cbtn_thu"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/circle_button"
+                android:text="Thu"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
+                app:layout_constraintStart_toEndOf="@id/cbtn_wed"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/cbtn_fri"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/circle_button"
+                android:text="Fri"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
+                app:layout_constraintStart_toEndOf="@id/cbtn_thu"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/cbtn_sat"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/circle_button"
+                android:text="Sat"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
+                app:layout_constraintStart_toEndOf="@id/cbtn_fri"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/cbtn_sun"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/circle_button"
+                android:text="Sun"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
+                app:layout_constraintStart_toEndOf="@id/cbtn_sat"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/tv_c_time"
+                app:layout_constraintTop_toBottomOf="@id/cbtn_wed"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_time" />
+
+            <EditText
+                android:id="@+id/et_c_time"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:paddingStart="5dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_time"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_round_border_et"
+                android:layout_marginStart="16dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/dd_mm_yyyy" />
+
+            <TextView
+                android:id="@+id/tv_c_capacity"
+                app:layout_constraintTop_toBottomOf="@id/et_c_time"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/course_capacity" />
+
+            <EditText
+                android:id="@+id/et_c_capacity"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_capacity"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_round_border_et"
+                android:layout_marginStart="16dp"
+                android:ems="10"
+                android:inputType="number" />
+
+
+            <TextView
+                android:id="@+id/tv_c_price"
+                app:layout_constraintTop_toBottomOf="@id/et_c_capacity"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/course_fees" />
+
+            <EditText
+                android:id="@+id/et_c_price"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_price"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_round_border_et"
+                android:layout_marginStart="16dp"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_c_type"
+                app:layout_constraintTop_toBottomOf="@id/et_c_price"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/course_type" />
+
+            <Spinner
+                android:id="@+id/spin_c_type"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="30dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/bg_round_border_et"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_type"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_c_room"
+                app:layout_constraintTop_toBottomOf="@id/spin_c_type"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/room_no" />
+
+            <EditText
+                android:id="@+id/et_c_room"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_room"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_round_border_et"
+                android:layout_marginStart="16dp"
+                android:ems="10"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/tv_c_mat"
+                app:layout_constraintTop_toBottomOf="@id/et_c_room"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yoga_mat" />
+
+            <RadioGroup
+                android:id="@+id/rg_mat"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_mat"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rb_mat_yes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mat_will_be_provided" />
+
+                <RadioButton
+                    android:id="@+id/rb_mat_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bring_your_own_mat" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_c_desc"
+                app:layout_constraintTop_toBottomOf="@id/rg_mat"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/description" />
+
+            <EditText
+                android:id="@+id/et_c_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_desc"
+                android:inputType="textMultiLine"
+                android:lines="4"
+                android:gravity="start|top"
+                android:hint="@string/type_your_message_here"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_round_border_et"
+                android:layout_marginStart="16dp"
+                android:ems="10" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

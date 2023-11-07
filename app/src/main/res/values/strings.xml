@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Yoga Mate</string>
+    <string name="add_course">ADD COURSE</string>
+    <string name="please_add_you_yoga_course_here">Please add you Yoga course here</string>
+    <string name="course_name">Course Name</string>
+    <string name="class_time">Class Time</string>
+    <string name="course_capacity">Course Capacity</string>
+    <string name="dd_mm_yyyy">dd/mm/yyyy</string>
+    <string name="course_fees">Course Fees</string>
+    <string name="description">Description</string>
+    <string name="bring_your_own_mat">Bring your own Mat</string>
+    <string name="mat_will_be_provided">Mat will be provided</string>
+    <string name="yoga_mat">Yoga Mat</string>
+    <string name="room_no">Room No</string>
+    <string name="course_type">Course Type</string>
+    <string name="type_your_message_here">Type your message here</string>
 </resources>
