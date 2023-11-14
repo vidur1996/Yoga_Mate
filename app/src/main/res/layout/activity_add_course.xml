@@ -364,6 +364,7 @@
                 android:inputType="textMultiLine"
                 android:lines="4"
                 android:gravity="start|top"
+                android:paddingStart="6dp"
                 android:hint="@string/type_your_message_here"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="8dp"

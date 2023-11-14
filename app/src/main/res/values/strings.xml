@@ -14,4 +14,9 @@
     <string name="room_no">Room No</string>
     <string name="course_type">Course Type</string>
     <string name="type_your_message_here">Type your message here</string>
+    <string name="please_add_the_instance_of_the_yoga_class">please add the instance of the Yoga class</string>
+    <string name="add_instance">Add instance</string>
+    <string name="class_name">Class Name :</string>
+    <string name="teacher_name">Teacher Name</string>
+    <string name="save_instances">Save Instances</string>
 </resources>
