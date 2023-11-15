@@ -55,7 +55,7 @@
                 android:id="@+id/et_c_name"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:paddingStart="5dp"
+                android:paddingStart="16dp"
                 app:layout_constraintTop_toBottomOf="@id/tv_c_name"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="8dp"
@@ -76,128 +76,77 @@
                 android:layout_height="wrap_content"
                 android:text="Days sessions to be held" />
 
-            <Button
-                android:id="@+id/cbtn_mon"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:padding="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/circle_button"
-                android:text="Mon"
-                android:textSize="12dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:gravity="center"
+            <com.google.android.material.button.MaterialButtonToggleGroup
                 app:layout_constraintTop_toBottomOf="@id/tv_c_days"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_gravity="center" />
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/tg_btn_grp_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/cbtn_tue"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:padding="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/circle_button"
-                android:text="Tue"
-                android:textSize="12dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
-                app:layout_constraintStart_toEndOf="@id/cbtn_mon"
-                android:layout_gravity="center" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cbtn_mon"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Mon"/>
 
-            <Button
-                android:id="@+id/cbtn_wed"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:padding="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/circle_button"
-                android:text="Wed"
-                android:textSize="12dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
-                app:layout_constraintStart_toEndOf="@id/cbtn_tue"
-                android:layout_gravity="center" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cbtn_tue"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Tue"/>
 
-            <Button
-                android:id="@+id/cbtn_thu"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:padding="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/circle_button"
-                android:text="Thu"
-                android:textSize="12dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
-                app:layout_constraintStart_toEndOf="@id/cbtn_wed"
-                android:layout_gravity="center" />
-
-            <Button
-                android:id="@+id/cbtn_fri"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:padding="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/circle_button"
-                android:text="Fri"
-                android:textSize="12dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
-                app:layout_constraintStart_toEndOf="@id/cbtn_thu"
-                android:layout_gravity="center" />
-
-            <Button
-                android:id="@+id/cbtn_sat"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:padding="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/circle_button"
-                android:text="Sat"
-                android:textSize="12dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
-                app:layout_constraintStart_toEndOf="@id/cbtn_fri"
-                android:layout_gravity="center" />
-
-            <Button
-                android:id="@+id/cbtn_sun"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:padding="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/circle_button"
-                android:text="Sun"
-                android:textSize="12dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/tv_c_days"
-                app:layout_constraintStart_toEndOf="@id/cbtn_sat"
-                android:layout_gravity="center" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cbtn_wed"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Wed"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cbtn_thu"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Thu"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cbtn_fri"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fri"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cbtn_sat"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sat"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cbtn_sun"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sun"/>
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
             <TextView
                 android:id="@+id/tv_c_time"
-                app:layout_constraintTop_toBottomOf="@id/cbtn_wed"
+                app:layout_constraintTop_toBottomOf="@id/tg_btn_grp_days"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -210,15 +159,16 @@
                 android:id="@+id/et_c_time"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:paddingStart="5dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_c_time"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_round_border_et"
-                android:layout_marginStart="16dp"
+                android:editable="false"
                 android:ems="10"
                 android:inputType="text"
-                android:hint="@string/dd_mm_yyyy" />
+                android:paddingStart="16dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_c_time" />
 
             <TextView
                 android:id="@+id/tv_c_capacity"
@@ -235,6 +185,7 @@
                 android:id="@+id/et_c_capacity"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
+                android:paddingStart="16dp"
                 app:layout_constraintTop_toBottomOf="@id/tv_c_capacity"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="8dp"
@@ -259,6 +210,7 @@
                 android:id="@+id/et_c_price"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
+                android:paddingStart="16dp"
                 app:layout_constraintTop_toBottomOf="@id/tv_c_price"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="8dp"
@@ -304,6 +256,7 @@
                 android:id="@+id/et_c_room"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
+                android:paddingStart="16dp"
                 app:layout_constraintTop_toBottomOf="@id/tv_c_room"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="8dp"
@@ -364,7 +317,8 @@
                 android:inputType="textMultiLine"
                 android:lines="4"
                 android:gravity="start|top"
-                android:paddingStart="6dp"
+                android:paddingTop="8dp"
+                android:paddingStart="16dp"
                 android:hint="@string/type_your_message_here"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="8dp"
@@ -373,6 +327,18 @@
                 android:layout_marginStart="16dp"
                 android:ems="10" />
 
+            <Button
+                android:id="@+id/btn_save_course"
+                android:text="SAVE COURSE"
+                app:layout_constraintTop_toBottomOf="@id/et_c_desc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

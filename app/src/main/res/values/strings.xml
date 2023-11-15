@@ -19,4 +19,10 @@
     <string name="class_name">Class Name :</string>
     <string name="teacher_name">Teacher Name</string>
     <string name="save_instances">Save Instances</string>
+
+    <string-array name="yoga_types">
+        <item>Flow Yoga</item>
+        <item>Aerial Yoga</item>
+        <item>Family Yoga</item>
+    </string-array>
 </resources>
