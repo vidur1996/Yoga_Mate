@@ -3,6 +3,7 @@ package com.example.yogamate.model;
 public class Course {
     String className;
     String classTime;
+    String classDay;
     int classCapacity;
     double classFees;
     String classType;
@@ -13,6 +14,14 @@ public class Course {
 
     public Course() {
 
+    }
+
+    public String getClassDay() {
+        return classDay;
+    }
+
+    public void setClassDay(String classDay) {
+        this.classDay = classDay;
     }
 
     public int getId() {

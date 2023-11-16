@@ -1,10 +1,15 @@
 package com.example.yogamate;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,10 +17,16 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.yogamate.model.Course;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Locale;
 
@@ -41,6 +52,7 @@ public class AddCourseActivity extends AppCompatActivity {
         cDesc    = findViewById(R.id.et_c_desc);
         toggleGroup.setSingleSelection(true);
         yTypes = findViewById(R.id.spin_c_type);
+        Course cs = new Course();
 
         toggleGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
@@ -52,22 +64,22 @@ public class AddCourseActivity extends AppCompatActivity {
                         buttonText = "Monday";
                     }
                     else if (checkedId ==R.id.cbtn_tue){
-                        buttonText = "tuday";
+                        buttonText = "Tuesday";
                     }
                     else if (checkedId ==R.id.cbtn_wed){
-                        buttonText = "wday";
+                        buttonText = "Wednesday";
                     }
                     else if (checkedId ==R.id.cbtn_thu){
-                        buttonText = "thday";
+                        buttonText = "Thursday";
                     }
                     else if (checkedId ==R.id.cbtn_fri){
-                        buttonText = "fday";
+                        buttonText = "Friday";
                     }
                     else if (checkedId ==R.id.cbtn_sat){
-                        buttonText = "saday";
+                        buttonText = "Satday";
                     }
                     else if (checkedId ==R.id.cbtn_sun){
-                            buttonText = "sunday";
+                            buttonText = "Sunday";
                     }
                     else {
                             buttonText = "select a day";
@@ -108,7 +120,29 @@ public class AddCourseActivity extends AppCompatActivity {
                         showAlert("Error","Please enter Room Number for the course");
                     }
                     else if(yTypes.getSelectedItem().toString().trim().equals("")){
-                        showAlert("Error","Please enter Room Number for the course");
+                        showAlert("Error","Please course type for the course");
+                    }
+                    else if(buttonText.equals("select a day")){
+                        showAlert("Error","Please course day for the course");
+                    }
+                    else {
+                        cs.setClassName(cName.getText().toString().trim());
+                        cs.setClassTime(cTime.getText().toString().trim());
+                        cs.setClassCapacity(Integer.parseInt(cCapacity.getText().toString().trim()));
+                        cs.setClassFees(Double.parseDouble(cPrice.getText().toString().trim()));
+                        cs.setRoomNo(cRoom.getText().toString().trim());
+                        cs.setDescription(cDesc.getText().toString().trim());
+                        cs.setClassType(yTypes.getSelectedItem().toString().trim());
+                        cs.setClassDay(buttonText.trim());
+                        saveData(cs);
+                      // boolean responce =  saveData(cs);
+
+                     //  if (responce){
+                     //      showAlert("Error","NETWORK ERROR");
+                      //  }
+                     //  else {
+                     //      showAlert("Succesful","Data saved successfully !");
+                    //   }
                     }
 
             }
@@ -119,6 +153,41 @@ public class AddCourseActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void saveData(Course cs){
+        final String[] id = new String[1];
+        DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
+//        reff.child("Courseid").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                id[0] = dataSnapshot.getValue().toString();
+//                cs.setId((Integer.parseInt(id[0]))+1);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                System.out.println("The read failed: " + databaseError.getCode());
+//            }
+//        });
+
+        DatabaseReference.CompletionListener complete = new DatabaseReference.CompletionListener() {
+            @Override
+
+            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                if(databaseError != null)
+                {
+                    showAlert("Error","NETWORK ERROR");
+                }
+                else
+                {
+                    showAlertToMove();
+                }
+            }
+        };
+        reff.child("course").child(cs.getClassName()).setValue(cs ,complete);
+
+       // return responce[0];
     }
 
     private void showTimePicker() {
@@ -168,5 +237,28 @@ public class AddCourseActivity extends AppCompatActivity {
 
                     }
                 }).show();
+    }
+
+    public void showAlertToMove() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(" successFul")
+                .setMessage("Data saved successfully,  /n now lets add instance  ")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        Intent it = new Intent(getApplicationContext(),InstanceActivity.class);
+
+                        startActivity(it);
+                        finish();
+
+                    }
+                }).show();
+
     }
 }
