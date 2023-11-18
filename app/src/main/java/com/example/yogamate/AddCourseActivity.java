@@ -9,6 +9,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,8 +34,9 @@ public class AddCourseActivity extends AppCompatActivity {
     MaterialButtonToggleGroup toggleGroup ;
     Button btn_save;
     Spinner yTypes;
-
-    String buttonText  = "";
+ RadioGroup radioGroup;
+ RadioButton radioButtonYes, radioButtonNo;
+    String buttonText  = "", mat;
     EditText cName,cTime,cCapacity,cPrice,cRoom,cDesc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,9 @@ public class AddCourseActivity extends AppCompatActivity {
         cDesc    = findViewById(R.id.et_c_desc);
         toggleGroup.setSingleSelection(true);
         yTypes = findViewById(R.id.spin_c_type);
+        radioGroup = findViewById(R.id.rg_mat);
+        radioButtonYes = findViewById(R.id.rb_mat_yes);
+        radioButtonNo = findViewById(R.id.rb_mat_no);
         Course cs = new Course();
 
         toggleGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
@@ -98,6 +104,19 @@ public class AddCourseActivity extends AppCompatActivity {
                 , android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.yoga_types));
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
        yTypes.setAdapter(myadapter);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // Check which radio button was clicked
+                if (checkedId == R.id.rb_mat_yes) {
+                    // "Yes" is selected
+                    mat = "Mat will be provided";
+                } else if (checkedId == R.id.rb_mat_no) {
+                    // "No" is selected
+                    mat ="Bring your own mat";
+                }
+            }
+        });
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,6 +141,9 @@ public class AddCourseActivity extends AppCompatActivity {
                     else if(buttonText.equals("select a day")){
                         showAlert("Error","Please course day for the course");
                     }
+                    else if(mat.equals("")){
+                        showAlert("Error","Please select preference for Yoga mat");
+                    }
                     else {
                         cs.setClassName(cName.getText().toString().trim());
                         cs.setClassTime(cTime.getText().toString().trim());
@@ -131,6 +153,7 @@ public class AddCourseActivity extends AppCompatActivity {
                         cs.setDescription(cDesc.getText().toString().trim());
                         cs.setClassType(yTypes.getSelectedItem().toString().trim());
                         cs.setClassDay(buttonText.trim());
+                        cs.setYogaMat(mat);
                         saveData(cs);
 
                     }

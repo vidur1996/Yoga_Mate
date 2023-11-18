@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Date            :"
+        android:text="Date             :"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,11 +37,11 @@
         android:textStyle="bold"
         android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintTop_toBottomOf="@id/lb_in_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Teacher      :" />
+        android:text="Teacher       :" />
 
     <TextView
         android:id="@+id/tv_in_teacher"
@@ -50,6 +50,31 @@
         android:layout_marginStart="10dp"
         app:layout_constraintStart_toEndOf="@id/lb_in_teacher"
         app:layout_constraintTop_toBottomOf="@id/tv_in_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xxxxxx" />
+
+    <TextView
+        android:id="@+id/lb_in_desc"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lb_in_teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="description :" />
+
+    <TextView
+        android:id="@+id/tv_in_desc"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/lb_in_desc"
+        app:layout_constraintTop_toBottomOf="@id/tv_in_teacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="xxxxxx" />

@@ -9,8 +9,10 @@ import android.widget.ImageView;
 
 import com.example.yogamate.AddInstanceActivity;
 import com.example.yogamate.R;
+import com.example.yogamate.adapter.InstanceAdapter;
+import com.example.yogamate.model.Instance;
 
-public class InstancesActivity extends AppCompatActivity {
+public class InstancesActivity extends AppCompatActivity implements InstanceAdapter.onClickConductorAdapter {
     ImageView img_add_inst;
     String courseId,courseName,dayOfweek;
     @Override
@@ -35,5 +37,15 @@ public class InstancesActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
+    }
+
+    @Override
+    public void onAcceptClick(Instance acceptUser, int index) {
+
+    }
+
+    @Override
+    public void onDeclineClick(Instance declineUser, int index) {
+
     }
 }
