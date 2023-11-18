@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditCourseActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tv_ec_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="10dp"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Course" />
+
+            <TextView
+                android:id="@+id/tv_ec_welcome"
+                app:layout_constraintTop_toBottomOf="@id/tv_ec_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="please fill all fields" />
+
+            <TextView
+                android:id="@+id/tv_ec_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_ec_welcome"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/course_name" />
+
+            <EditText
+                android:id="@+id/et_ec_name"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:paddingStart="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_ec_name"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_round_border_et"
+                android:layout_marginStart="16dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/course_name" />
+
+            <TextView
+                android:id="@+id/tv_ec_days"
+                app:layout_constraintTop_toBottomOf="@id/et_ec_name"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Days sessions to be held" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                app:layout_constraintTop_toBottomOf="@id/tv_ec_days"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/tg_ebtn_grp_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/ecbtn_mon"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Mon"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/ecbtn_tue"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Tue"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/ecbtn_wed"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Wed"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/ecbtn_thu"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Thu"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/ecbtn_fri"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fri"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/ecbtn_sat"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sat"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/ecbtn_sun"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="55dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sun"/>
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <TextView
+                android:id="@+id/tv_ec_time"
+                app:layout_constraintTop_toBottomOf="@id/tg_ebtn_grp_days"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_time" />
+
+            <EditText
+                android:id="@+id/et_ec_time"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_round_border_et"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="text"
+                android:paddingStart="16dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_ec_time" />
+
+            <TextView
+                android:id="@+id/tv_ec_capacity"
+                app:layout_constraintTop_toBottomOf="@id/et_ec_time"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/course_capacity" />
+
+            <EditText
+                android:id="@+id/et_ec_capacity"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:paddingStart="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_ec_capacity"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_round_border_et"
+                android:layout_marginStart="16dp"
+                android:ems="10"
+                android:inputType="number" />
+
+
+            <TextView
+                android:id="@+id/tv_ec_price"
+                app:layout_constraintTop_toBottomOf="@id/et_ec_capacity"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/course_fees" />
+
+            <EditText
+                android:id="@+id/et_ec_price"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:paddingStart="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_ec_price"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_round_border_et"
+                android:layout_marginStart="16dp"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_ec_type"
+                app:layout_constraintTop_toBottomOf="@id/et_ec_price"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/course_type" />
+
+            <Spinner
+                android:id="@+id/spin_ec_type"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="30dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/bg_round_border_et"
+                app:layout_constraintTop_toBottomOf="@id/tv_ec_type"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_ec_room"
+                app:layout_constraintTop_toBottomOf="@id/spin_ec_type"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/room_no" />
+
+            <EditText
+                android:id="@+id/et_ec_room"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:paddingStart="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_ec_room"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_round_border_et"
+                android:layout_marginStart="16dp"
+                android:ems="10"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/tv_ec_mat"
+                app:layout_constraintTop_toBottomOf="@id/et_ec_room"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yoga_mat" />
+
+            <RadioGroup
+                android:id="@+id/rg_emat"
+                app:layout_constraintTop_toBottomOf="@id/tv_ec_mat"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rb_emat_yes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mat_will_be_provided" />
+
+                <RadioButton
+                    android:id="@+id/rb_emat_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bring_your_own_mat" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_ec_desc"
+                app:layout_constraintTop_toBottomOf="@id/rg_emat"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/description" />
+
+            <EditText
+                android:id="@+id/et_ec_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_ec_desc"
+                android:inputType="textMultiLine"
+                android:lines="4"
+                android:gravity="start|top"
+                android:paddingTop="8dp"
+                android:paddingStart="16dp"
+                android:hint="@string/type_your_message_here"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_round_border_et"
+                android:layout_marginStart="16dp"
+                android:ems="10" />
+
+            <Button
+                android:id="@+id/btn_update_course"
+                android:text="UPDATE COURSE"
+                app:layout_constraintTop_toBottomOf="@id/et_ec_desc"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/btn_edit_instance"
+                android:text="UPDATE INSTANCES"
+                app:layout_constraintTop_toBottomOf="@id/et_ec_desc"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

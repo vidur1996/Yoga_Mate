@@ -13,7 +13,22 @@
         android:theme="@style/Theme.YogaMate"
         tools:targetApi="31">
         <activity
-            android:name=".InstanceActivity"
+            android:name=".InstancesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewInstancesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditInstancesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddInstanceActivity"
             android:exported="false" />
         <activity
             android:name=".AddCourseActivity"

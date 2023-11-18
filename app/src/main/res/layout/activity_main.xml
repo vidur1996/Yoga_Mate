@@ -17,6 +17,17 @@
         android:background="@drawable/btn_day"
         android:textColor="#FF5733" />
 
+    <Button
+        android:id="@+id/btn_test"
+        app:layout_constraintTop_toBottomOf="@id/btn_add_course"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tst"
+        android:background="@drawable/btn_day"
+        android:textColor="#FF5733" />
+
 
 
 
