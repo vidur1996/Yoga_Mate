@@ -1,45 +1,40 @@
 package com.example.yogamate;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Parcel;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.yogamate.model.Course;
 import com.example.yogamate.model.Instance;
 import com.google.android.material.datepicker.CalendarConstraints;
-import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.TimeZone;
 
 public class AddInstanceActivity extends AppCompatActivity {
 
     String courseId,courseName,dayOfweek;
-    EditText inDate,teaName,inDesc;
+    EditText inDate,teaName, inDesc;
+    int id;
     Button saveInstance;
     TextView csName;
     Instance in = new Instance();
@@ -59,6 +54,7 @@ public class AddInstanceActivity extends AppCompatActivity {
             dayOfweek = extras.getString("day");
         }
         csName.setText(courseName);
+        setInId();
 
         inDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +76,7 @@ public class AddInstanceActivity extends AppCompatActivity {
                     // save instave
                     in.setClassId(courseId);
                     in.setDate(inDate.getText().toString().trim());
-                    in.setInstanceId("1");
+                    in.setInstanceId(id);
                     in.setTeacher(teaName.getText().toString().trim());
                     in.setDescription(inDesc.getText().toString().trim());
                     saveData(in);
@@ -104,11 +100,11 @@ public class AddInstanceActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    showAlertToMove();
+                    updateId(in.getInstanceId());
                 }
             }
         };
-        reff.child("course").child(courseName).child("instance").child(in.getInstanceId()).setValue(in ,complete);
+        reff.child("course").child(courseName).child("instance").child(String.valueOf(in.getInstanceId())).setValue(in, complete);
 
 
     }
@@ -225,6 +221,43 @@ public class AddInstanceActivity extends AppCompatActivity {
 
                     }
                 }).show();
+
+    }
+
+    public void setInId() {
+
+        DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                id = Integer.parseInt(dataSnapshot.child("InstanceId").getValue().toString()) + 1;
+                Log.e("xxxxxx", dataSnapshot.child("InstanceId").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("xxxx", "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        reff.addValueEventListener(postListener);
+
+    }
+
+    public void updateId(int id) {
+        DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference.CompletionListener complete = new DatabaseReference.CompletionListener() {
+            @Override
+
+            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                if (databaseError != null) {
+                    showAlert("Error", "NETWORK ERROR");
+                } else {
+                    showAlertToMove();
+                }
+            }
+        };
+        reff.child("InstanceId").setValue(String.valueOf(id), complete);
+
 
     }
 

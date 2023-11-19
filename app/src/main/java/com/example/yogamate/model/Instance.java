@@ -1,10 +1,11 @@
 package com.example.yogamate.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Instance {
+public class Instance implements Serializable {
     String classId;
-    String instanceId;
+    int instanceId;
     String date;
     String teacher;
     String description;
@@ -17,11 +18,11 @@ public class Instance {
         this.classId = classId;
     }
 
-    public String getInstanceId() {
+    public int getInstanceId() {
         return instanceId;
     }
 
-    public void setInstanceId(String instanceId) {
+    public void setInstanceId(int instanceId) {
         this.instanceId = instanceId;
     }
 

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class InstanceAdapter extends RecyclerView.Adapter<InstanceAdapter.ViewHolder> {
 
     private final ArrayList<Instance> inset;
-    onClickConductorAdapter callback;
+    onClickInstanceAdapter callback;
 
     public InstanceAdapter(ArrayList<Instance> arrayList) {
         //this.userSet = userSet;
@@ -37,13 +37,13 @@ public class InstanceAdapter extends RecyclerView.Adapter<InstanceAdapter.ViewHo
         holder.tv_teacher.setText(myListData.getTeacher());
         holder.tv_days.setText(myListData.getDate());
         holder.tv_desc.setText(myListData.getDescription());
-        holder.delete.setOnClickListener(new View.OnClickListener() {
+        holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 callback.onAcceptClick(myListData, position);
             }
         });
-        holder.edit.setOnClickListener(new View.OnClickListener() {
+        holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 callback.onDeclineClick(myListData, position);
@@ -58,14 +58,14 @@ public class InstanceAdapter extends RecyclerView.Adapter<InstanceAdapter.ViewHo
         return inset.size();
     }
 
-    public void onClickConductorAdapter(onClickConductorAdapter callback) {
+    public void onClickInstanceAdapter(onClickInstanceAdapter callback) {
         this.callback = callback;
     }
 
-    public interface onClickConductorAdapter {
-        void onAcceptClick(Instance acceptUser, int index);
+    public interface onClickInstanceAdapter {
+        void onAcceptClick(Instance editIn, int index);
 
-        void onDeclineClick(Instance declineUser, int index);
+        void onDeclineClick(Instance deleteIn, int index);
 
     }
 

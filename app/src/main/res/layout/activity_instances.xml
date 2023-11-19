@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".InstancesActivity">
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_favorite_route"
+        android:id="@+id/rv_instance"
         android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
