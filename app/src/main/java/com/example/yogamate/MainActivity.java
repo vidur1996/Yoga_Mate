@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity  {
         btntest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(getApplicationContext(), InstancesActivity.class);
-                it.putExtra("course_name","hello");
-                it.putExtra("course_id","11");
-                it.putExtra("day","Sunday");
+                Intent it = new Intent(getApplicationContext(), ViewCourseActivity.class);
+//                it.putExtra("course_name","hello");
+//                it.putExtra("course_id","11");
+//                it.putExtra("day","Sunday");
                 startActivity(it);
             }
         });

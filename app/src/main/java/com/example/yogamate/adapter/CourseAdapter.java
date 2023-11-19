@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yogamate.R;
@@ -40,10 +41,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callback.onEditClick(myListData, position);
+                callback.onDetailsClick(myListData, position);
             }
         });
-        holder.edit.setOnClickListener(new View.OnClickListener() {
+        holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 callback.onDelClick(myListData, position);
@@ -63,7 +64,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
     }
 
     public interface onClickCourseAdapter {
-        void onEditClick(Course editcourse, int index);
+        void onDetailsClick(Course editcourse, int index);
 
         void onDelClick(Course delcourse, int index);
 
@@ -74,7 +75,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         TextView tv_days;
         TextView tv_type;
         ImageView delete;
-        ImageView edit;
+        ConstraintLayout details;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -82,7 +83,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
             tv_days = (TextView) itemView.findViewById(R.id.tv_course_day);
             tv_type = (TextView) itemView.findViewById(R.id.tv_course_type);
             delete = (ImageView) itemView.findViewById(R.id.img_cs_delete);
-            edit = (ImageView) itemView.findViewById(R.id.img_cs_edit);
+            details = (ConstraintLayout) itemView.findViewById(R.id.layout_course);
 
         }
     }

@@ -50,6 +50,8 @@ public class EditCourseActivity extends AppCompatActivity {
         toggleGroup.setSingleSelection(true);
         yTypes = findViewById(R.id.spin_ec_type);
 
+
+
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
