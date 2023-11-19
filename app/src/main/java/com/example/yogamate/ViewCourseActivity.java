@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.example.yogamate.adapter.CourseAdapter;
 import com.example.yogamate.model.Course;
 
-public class ViewCourseActivity extends AppCompatActivity implements CourseAdapter.onClickConductorAdapter {
+public class ViewCourseActivity extends AppCompatActivity implements CourseAdapter.onClickCourseAdapter {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,12 +16,12 @@ public class ViewCourseActivity extends AppCompatActivity implements CourseAdapt
     }
 
     @Override
-    public void onAcceptClick(Course acceptUser, int index) {
+    public void onEditClick(Course acceptUser, int index) {
 
     }
 
     @Override
-    public void onDeclineClick(Course declineUser, int index) {
+    public void onDelClick(Course declineUser, int index) {
 
     }
 }

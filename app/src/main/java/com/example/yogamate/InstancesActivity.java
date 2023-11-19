@@ -65,7 +65,7 @@ public class InstancesActivity extends AppCompatActivity implements InstanceAdap
 
     public void SetRecycler(){
             list.clear();
-            databaseReference = FirebaseDatabase.getInstance().getReference().child("course").child(courseName).child("instance");
+            databaseReference = FirebaseDatabase.getInstance().getReference().child("course").child(courseId).child("instance");
             databaseReference.addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
@@ -140,7 +140,7 @@ public class InstancesActivity extends AppCompatActivity implements InstanceAdap
                             }
                         };
 
-                        reff.child("course").child(courseName).child("instance").child(String.valueOf(deleteIn.getInstanceId())).removeValue();
+                        reff.child("course").child(courseId).child("instance").child(String.valueOf(deleteIn.getInstanceId())).removeValue();
                         list.remove(index);
                         adapter.notifyDataSetChanged();
 
@@ -161,4 +161,6 @@ public class InstancesActivity extends AppCompatActivity implements InstanceAdap
         super.onResume();
         SetRecycler();
     }
+
+
 }

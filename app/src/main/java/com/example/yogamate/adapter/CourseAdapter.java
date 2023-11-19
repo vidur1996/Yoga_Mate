@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
 
     private final ArrayList<Course> courseset;
-    onClickConductorAdapter callback;
+    onClickCourseAdapter callback;
 
     public CourseAdapter(ArrayList<Course> arrayList) {
         //this.userSet = userSet;
@@ -40,13 +40,13 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callback.onAcceptClick(myListData, position);
+                callback.onEditClick(myListData, position);
             }
         });
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callback.onDeclineClick(myListData, position);
+                callback.onDelClick(myListData, position);
             }
         });
 
@@ -58,14 +58,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         return courseset.size();
     }
 
-    public void onClickConductorAdapter(onClickConductorAdapter callback) {
+    public void onClickCourseAdapter(onClickCourseAdapter callback) {
         this.callback = callback;
     }
 
-    public interface onClickConductorAdapter {
-        void onAcceptClick(Course acceptUser, int index);
+    public interface onClickCourseAdapter {
+        void onEditClick(Course editcourse, int index);
 
-        void onDeclineClick(Course declineUser, int index);
+        void onDelClick(Course delcourse, int index);
 
     }
 

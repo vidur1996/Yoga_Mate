@@ -114,7 +114,7 @@ public class EditInstancesActivity extends AppCompatActivity {
                 }
             }
         };
-        reff.child("course").child(courseName).child("instance").child(String.valueOf(in.getInstanceId())).setValue(in, complete);
+        reff.child("course").child(courseId).child("instance").child(String.valueOf(in.getInstanceId())).setValue(in, complete);
 
 
     }
