@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.yogamate.adapter.CourseAdapter;
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ViewCourseActivity extends AppCompatActivity implements CourseAdapter.onClickCourseAdapter {
@@ -85,15 +87,17 @@ public class ViewCourseActivity extends AppCompatActivity implements CourseAdapt
     }
 
     @Override
-    public void onDetailsClick(Course acceptUser, int index) {
-
+    public void onDetailsClick(Course course, int index) {
+        Intent in = new Intent(getApplicationContext(),CourseDetailActivity.class);
+        in.putExtra("course", (Serializable) course);
+        startActivity(in);
     }
 
     @Override
-    public void onDelClick(Course declineUser, int index) {
+    public void onDelClick(Course cs, int index) {
         new MaterialAlertDialogBuilder(ViewCourseActivity.this)
                 .setTitle("Alert")
-                .setMessage("Are you sure you want to drop course on " + declineUser.getClassName())
+                .setMessage("Are you sure you want to drop course on " + cs.getClassName())
                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -106,7 +110,7 @@ public class ViewCourseActivity extends AppCompatActivity implements CourseAdapt
                             }
                         };
 
-                        reff.child("course").child(String.valueOf(declineUser.getId())).removeValue();
+                        reff.child("course").child(String.valueOf(cs.getId())).removeValue();
                         list.remove(index);
                         adapter.notifyDataSetChanged();
 

@@ -46,9 +46,9 @@ public class EditInstancesActivity extends AppCompatActivity {
         saveInstance = findViewById(R.id.btn_ein_save);
         Intent intent = getIntent();
 
-        // Retrieve data using the keys used in putExtra()
+
         courseName = intent.getStringExtra("course_name");
-        courseId = String.valueOf(intent.getIntExtra("course_id", -1)); // default value if not found
+        courseId = String.valueOf(intent.getIntExtra("course_id", -1));
         dayOfweek = intent.getStringExtra("day");
         in = (Instance) intent.getSerializableExtra("instance");
 

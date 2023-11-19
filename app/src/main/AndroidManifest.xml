@@ -16,7 +16,7 @@
             android:name=".InstancesActivity"
             android:exported="false" />
         <activity
-            android:name=".ViewInstancesActivity"
+            android:name=".CourseDetailActivity"
             android:exported="false" />
         <activity
             android:name=".ViewCourseActivity"

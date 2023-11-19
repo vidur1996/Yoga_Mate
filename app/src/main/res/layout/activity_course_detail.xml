@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CourseDetailActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_cd_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="10dp"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxxxx" />
+
+            <ImageView
+                android:id="@+id/img_cd_edit"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+
+                android:layout_marginEnd="48dp"
+                app:layout_constraintTop_toTopOf="@id/tv_cd_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/edit" />
+            <TextView
+                android:id="@+id/lb_cd_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_cd_title"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Course name  : " />
+
+            <TextView
+                android:id="@+id/tv_cd_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_cd_title"
+                app:layout_constraintStart_toEndOf="@+id/lb_cd_name"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxxxxxx" />
+
+            <TextView
+                android:id="@+id/lb_cd_days"
+                app:layout_constraintTop_toBottomOf="@id/tv_cd_name"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Days sessions to be held : " />
+
+            <TextView
+                android:id="@+id/tv_cd_days"
+                app:layout_constraintTop_toBottomOf="@id/tv_cd_name"
+                app:layout_constraintStart_toEndOf="@id/lb_cd_days"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxxxxxxxx" />
+
+            <TextView
+                android:id="@+id/lb_cd_time"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_days"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class time : " />
+
+            <TextView
+                android:id="@+id/tv_cd_time"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_days"
+                app:layout_constraintStart_toEndOf="@+id/lb_cd_time"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxxxxx" />
+
+            <TextView
+                android:id="@+id/lb_cd_capacity"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_time"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Course capacity : " />
+
+            <TextView
+                android:id="@+id/tv_cd_capacity"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_time"
+                app:layout_constraintStart_toEndOf="@id/lb_cd_capacity"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxxxxx " />
+
+            <TextView
+                android:id="@+id/lb_cd_price"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_capacity"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Course fees : " />
+
+            <TextView
+                android:id="@+id/tv_cd_price"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_capacity"
+                app:layout_constraintStart_toEndOf="@id/lb_cd_price"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxxxxx" />
+
+            <TextView
+                android:id="@+id/lb_cd_type"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_price"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Course type : " />
+
+            <TextView
+                android:id="@+id/tv_cd_type"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_price"
+                app:layout_constraintStart_toEndOf="@id/lb_cd_type"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxxxx" />
+
+            <TextView
+                android:id="@+id/lb_cd_room"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_type"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Room no : " />
+
+
+            <TextView
+                android:id="@+id/tv_cd_room"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_type"
+                app:layout_constraintStart_toEndOf="@id/lb_cd_room"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxxx" />
+
+
+            <TextView
+                android:id="@+id/lb_cd_mat"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_room"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yoga mat : " />
+
+            <TextView
+                android:id="@+id/tv_cd_mat"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_room"
+                app:layout_constraintStart_toEndOf="@id/lb_cd_room"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxxx" />
+
+            <TextView
+                android:id="@+id/lb_cd_desc"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_mat"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/description" />
+
+            <TextView
+                android:id="@+id/tv_cd_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/description"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/lb_cd_desc"
+                app:layout_constraintTop_toBottomOf="@id/lb_cd_mat" />
+
+            <ListView
+                android:padding="16dp"
+                android:id="@+id/lv_instances"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_cd_desc"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

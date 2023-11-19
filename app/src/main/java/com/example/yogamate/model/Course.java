@@ -1,6 +1,8 @@
 package com.example.yogamate.model;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable {
     String className;
     String classTime;
     String classDay;

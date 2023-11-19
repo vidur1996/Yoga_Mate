@@ -41,13 +41,13 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callback.onDetailsClick(myListData, position);
+                callback.onDelClick(myListData, position);
             }
         });
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callback.onDelClick(myListData, position);
+                callback.onDetailsClick(myListData, position);
             }
         });
 
