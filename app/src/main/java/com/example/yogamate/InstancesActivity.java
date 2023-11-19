@@ -47,7 +47,7 @@ public class InstancesActivity extends AppCompatActivity implements InstanceAdap
             courseName = extras.getString("course_name");
             dayOfweek = extras.getString("day");
         }
-        SetRecycler();
+    //    SetRecycler();
 
 
         img_add_inst.setOnClickListener(new View.OnClickListener() {
@@ -154,5 +154,11 @@ public class InstancesActivity extends AppCompatActivity implements InstanceAdap
                     }
                 }).show();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SetRecycler();
     }
 }
