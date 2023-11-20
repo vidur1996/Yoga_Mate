@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +31,7 @@ public class CourseDetailActivity extends AppCompatActivity {
     Course cs = new Course();
     DatabaseReference databaseReference;
     TextView cdName,cdDay,cdTime,cdCapacity,cdPrice,cdType,cdRoom,cdMat,cdDesc;
+    ImageView edit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +47,23 @@ public class CourseDetailActivity extends AppCompatActivity {
         cdRoom =  findViewById(R.id.tv_cd_room);
         cdMat=  findViewById(R.id.tv_cd_mat);
         cdDesc =  findViewById(R.id.tv_cd_desc);
+        edit = findViewById(R.id.img_cd_edit);
         getInstanceList(cs.getId());
+        displayDate();
+
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent in = new Intent(getApplicationContext(),EditCourseActivity.class);
+                    in.putExtra("course", (Serializable) cs);
+                    startActivity(in);
+                }
+            });
+
+
+    }
+
+    public void displayDate(){
         cdName.setText(cs.getClassName());
         cdDay.setText(cs.getClassDay());
         cdTime.setText(cs.getClassTime());
@@ -53,10 +73,6 @@ public class CourseDetailActivity extends AppCompatActivity {
         cdRoom.setText(cs.getRoomNo());
         cdMat.setText(cs.getYogaMat());
         cdDesc.setText(cs.getDescription());
-
-
-
-
     }
 
     public void getInstanceList(int id){

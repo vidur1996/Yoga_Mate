@@ -10,8 +10,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.example.yogamate.model.Course;
@@ -34,6 +37,9 @@ public class EditCourseActivity extends AppCompatActivity {
     EditText cName,cTime,cCapacity,cPrice,cRoom,cDesc;
     Course cs = new Course();
 
+    RadioGroup radioGroup;
+    RadioButton radioButtonYes, radioButtonNo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +53,14 @@ public class EditCourseActivity extends AppCompatActivity {
         cPrice   = findViewById(R.id.et_ec_price);
         cRoom    = findViewById(R.id.et_ec_room);
         cDesc    = findViewById(R.id.et_ec_desc);
+        radioGroup = findViewById(R.id.rg_emat);
+        radioButtonYes = findViewById(R.id.rb_emat_yes);
+        radioButtonNo = findViewById(R.id.rb_emat_no);
         toggleGroup.setSingleSelection(true);
         yTypes = findViewById(R.id.spin_ec_type);
-
-
+        Intent intent = getIntent();
+        cs = (Course) intent.getSerializableExtra("course");
+        displayData();
 
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,16 +112,88 @@ public class EditCourseActivity extends AppCompatActivity {
         btn_in_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getApplicationContext(), EditInstancesActivity.class);
-                in.putExtra("courseid",cs.getId());
+                Intent in = new Intent(getApplicationContext(), InstancesActivity.class);
+                in.putExtra("course_id",String.valueOf(cs.getId()));
+                in.putExtra("course_name",cs.getClassName());
+                in.putExtra("day",cs.getClassDay());
                 startActivity(in);
+            }
+        });
+        cTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showTimePicker();
             }
         });
 
     }
+    public void displayData(){
+        cName.setText(cs.getClassName());
+        setDayButton(cs.getClassDay());
+        cTime.setText(cs.getClassTime());
+        cCapacity.setText(String.valueOf(cs.getClassCapacity()));
+        cPrice.setText(String.valueOf(cs.getClassFees()));
+        setSpinnerSelected(cs.getClassType());
+        cRoom.setText(cs.getRoomNo());
+        cDesc.setText(cs.getDescription());
+        if(cs.getYogaMat().equals("Mat will be provided")){
+            radioButtonYes.setChecked(true);
+            radioButtonNo.setChecked(false);
+        }
+        else{
+            radioButtonYes.setChecked(false);
+            radioButtonNo.setChecked(true);
+        }
+
+    }
+
+    public void setDayButton(String day){
+        if(day.equals( "Monday")){
+                toggleGroup.check(R.id.ecbtn_mon);
+            }
+        if(day.equals( "Tuesday")){
+        toggleGroup.check(R.id.ecbtn_tue);
+            }
+        if(day.equals( "Tuesday")){
+            toggleGroup.check(R.id.ecbtn_tue);
+            }
+        if(day.equals( "Wednesday")){
+            toggleGroup.check(R.id.ecbtn_wed);
+            }
+        if(day.equals( "Thursday")){
+            toggleGroup.check(R.id.ecbtn_thu);
+            }
+        if(day.equals( "Friday")){
+            toggleGroup.check(R.id.ecbtn_fri);
+            }
+        if(day.equals( "Saturday")){
+            toggleGroup.check(R.id.ecbtn_sat);
+            }
+        else {
+            toggleGroup.check(R.id.ecbtn_sun);
+            }
+
+    }
+
+    public void setSpinnerSelected(String type){
+        final ArrayAdapter<String> myadapter = new ArrayAdapter<String>(EditCourseActivity.this
+                , android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.yoga_types));
+        myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        yTypes.setAdapter(myadapter);
+        if (type.equals("Flow Yoga")){
+            yTypes.setSelection(0);
+        }
+        else if (type.equals("Aerial Yoga")){
+            yTypes.setSelection(1);
+        }
+        else{
+            yTypes.setSelection(2);
+        }
+
+    }
 
     private void saveData(Course cs){
-        final String[] id = new String[1];
+
         DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
 
 
@@ -129,9 +211,9 @@ public class EditCourseActivity extends AppCompatActivity {
                 }
             }
         };
-        reff.child("course").child(cs.getClassName()).setValue(cs ,complete);
+        reff.child("course").child(String.valueOf( cs.getId())).setValue(cs ,complete);
 
-        // return responce[0];
+
     }
 
     private void showTimePicker() {
@@ -196,10 +278,8 @@ public class EditCourseActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        //Intent it = new Intent(getApplicationContext(),InstanceActivity.class);
 
-                        //startActivity(it);
-                        // finish();
+                       finish();
 
                     }
                 }).show();

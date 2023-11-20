@@ -31,9 +31,7 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(getApplicationContext(), ViewCourseActivity.class);
-//                it.putExtra("course_name","hello");
-//                it.putExtra("course_id","11");
-//                it.putExtra("day","Sunday");
+
                 startActivity(it);
             }
         });

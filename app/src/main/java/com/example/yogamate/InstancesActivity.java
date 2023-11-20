@@ -159,6 +159,12 @@ public class InstancesActivity extends AppCompatActivity implements InstanceAdap
     @Override
     protected void onResume() {
         super.onResume();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            courseId = extras.getString("course_id");
+            courseName = extras.getString("course_name");
+            dayOfweek = extras.getString("day");
+        }
         SetRecycler();
     }
 
