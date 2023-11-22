@@ -9,15 +9,15 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity  {
 
-    Button btnAddCourse, btntest;
+    Button btnAddCourse, btnViewCourse,btnWebservice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         btnAddCourse = findViewById(R.id.btn_add_course);
-        btntest = findViewById(R.id.btn_test);
-
+        btnViewCourse = findViewById(R.id.btn_view_course );
+        btnWebservice = findViewById(R.id.btn_save_webservice);
 
         btnAddCourse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,11 +27,19 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
 
-        btntest.setOnClickListener(new View.OnClickListener() {
+        btnViewCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(getApplicationContext(), ViewCourseActivity.class);
 
+                startActivity(it);
+            }
+        });
+
+        btnWebservice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(getApplicationContext(), WebServiceActivity.class);
                 startActivity(it);
             }
         });

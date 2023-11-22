@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WebServiceActivity">
+
+    <TextView
+        android:id="@+id/tv_stitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Course to WebService" />
+
+    <TextView
+        android:id="@+id/tv_swelcome"
+        app:layout_constraintTop_toBottomOf="@id/tv_stitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Please add enter your user Id to continue upload to webservice" />
+
+    <TextView
+        android:id="@+id/tv_cs_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_swelcome"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Id" />
+
+    <EditText
+        android:id="@+id/et_cs_name"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:paddingStart="16dp"
+        android:text="vtzz22"
+        app:layout_constraintTop_toBottomOf="@id/tv_cs_name"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_round_border_et"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="User Id (default - vtzz22)" />
+
+    <Button
+        android:id="@+id/btn_upload_course"
+        android:text="UPLOAD TO COURSE TO WEBSERVICE"
+        app:layout_constraintTop_toBottomOf="@+id/et_cs_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="20dp"
+
+        android:layout_marginTop="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

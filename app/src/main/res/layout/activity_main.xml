@@ -6,30 +6,75 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_add_course"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click Me"
-        android:background="@drawable/btn_day"
-        android:textColor="#FF5733" />
+        android:src="@drawable/yoga"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_m_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Welcome to YOGA-MATE \n your are using the admin app"
+        android:textAlignment="center"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView" />
 
     <Button
-        android:id="@+id/btn_test"
+        android:id="@+id/btn_add_course"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="Add new Course"
+        android:textColor="#ffffff"
+        android:layout_height="wrap_content"
+        android:textSize="8pt"
+        app:layout_constraintTop_toBottomOf="@id/tv_m_welcome" />
+
+    <Button
+        android:id="@+id/btn_view_course"
         app:layout_constraintTop_toBottomOf="@id/btn_add_course"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="View courses"
         android:layout_height="wrap_content"
-        android:text="tst"
-        android:background="@drawable/btn_day"
-        android:textColor="#FF5733" />
+        android:textColor="#FFFFFF"
+        android:textSize="8pt" />
 
-
-
+    <Button
+        android:id="@+id/btn_save_webservice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="Save to Web service"
+        android:textColor="#FFFFFF"
+        android:textSize="8pt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_view_course" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

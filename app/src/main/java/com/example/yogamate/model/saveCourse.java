@@ -1,9 +1,10 @@
 package com.example.yogamate.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class saveCourse {
+public class saveCourse implements Serializable {
     String className;
     String classTime;
     String classDay;
