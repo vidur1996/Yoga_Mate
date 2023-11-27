@@ -107,7 +107,7 @@ public class InstancesActivity extends AppCompatActivity implements InstanceAdap
                 }
             });
 
-            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_instance);
+            RecyclerView recyclerView = findViewById(R.id.rv_instance);
             adapter = new InstanceAdapter(list);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -122,7 +122,7 @@ public class InstancesActivity extends AppCompatActivity implements InstanceAdap
         it.putExtra("course_name",courseName);
         it.putExtra("course_id",courseId);
         it.putExtra("day",dayOfweek);
-        it.putExtra("instance", (Serializable) editIn);
+        it.putExtra("instance", editIn);
         startActivity(it);
 
     }

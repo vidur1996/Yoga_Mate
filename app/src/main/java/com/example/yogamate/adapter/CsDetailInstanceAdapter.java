@@ -14,8 +14,8 @@ import java.util.List;
 
 public class CsDetailInstanceAdapter extends BaseAdapter {
 
-    private List<Instance> dataList;
-    private Context context;
+    private final List<Instance> dataList;
+    private final Context context;
 
     public CsDetailInstanceAdapter(Context context, List<Instance> dataList) {
         this.context = context;

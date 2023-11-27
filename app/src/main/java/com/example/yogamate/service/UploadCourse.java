@@ -11,74 +11,64 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 
 public class UploadCourse {
 
-    public CompletableFuture<Response> uploadJson(String jsonInput) {
-        CompletableFuture<Response> future = new CompletableFuture<>();
-
-        new Thread(() -> {
-            HttpURLConnection urlConnection = null;
-            DataOutputStream dataOutputStream = null;
-
-            try {
-                URL url = new URL("https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cw/SubmitClasses");
-                urlConnection = (HttpURLConnection) url.openConnection();
-
-                // Set up the connection
-                urlConnection.setRequestMethod("POST");
-                urlConnection.setRequestProperty("Content-Type", "application/json");
-                urlConnection.setDoOutput(true);
-
-                // Write the JSON data to the output stream
-                OutputStream outputStream = urlConnection.getOutputStream();
-                dataOutputStream = new DataOutputStream(outputStream);
-                dataOutputStream.writeBytes(jsonInput);
-
-                // Get the response code
-                int responseCode = urlConnection.getResponseCode();
-
-                if (responseCode == HttpURLConnection.HTTP_OK) {
-                    // Read the response from the server
-                    InputStream inputStream = urlConnection.getInputStream();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                    StringBuilder result = new StringBuilder();
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        result.append(line);
-                    }
-
-                    // Parse the JSON response using Gson
-                    Gson gson = new Gson();
-                    Response response = gson.fromJson(result.toString(), Response.class);
-
-                    // Complete the CompletableFuture with the response
-                    future.complete(response);
-                } else {
-                    // Handle error response code if needed
-                    // You might want to set some default values or handle the error in another way
-                    future.completeExceptionally(new RuntimeException("Error, Response Code: " + responseCode));
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                future.completeExceptionally(e);
-            } finally {
-                // Close the connections and streams
-                if (urlConnection != null) {
-                    urlConnection.disconnect();
-                }
-                if (dataOutputStream != null) {
-                    try {
-                        dataOutputStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
-
-        return future;
-    }
+//    private void sendJsonAndGetResponse(String jsonData) {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    URL url = new URL("https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cw/SubmitClasses");
+//                    //trustAllHosts();
+//
+//                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//                    connection.setRequestMethod("POST");
+//                    connection.setRequestProperty("Content-Type", "application/json");
+//                    connection.setDoOutput(true);
+//
+//                    // Replace this with your actual JSON data
+//
+//
+//                    try (OutputStream os = connection.getOutputStream()) {
+//                        byte[] input = jsonData.getBytes(StandardCharsets.UTF_8);
+//                        os.write(input, 0, input.length);
+//                    }
+//
+//                    int responseCode = connection.getResponseCode();
+//
+//                    // Handle the response code and read the response
+//                    if (responseCode == HttpURLConnection.HTTP_OK) {
+//                        try (BufferedReader reader = new BufferedReader(
+//                                new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
+//
+//                            StringBuilder response = new StringBuilder();
+//                            String line;
+//                            while ((line = reader.readLine()) != null) {
+//                                response.append(line);
+//                            }
+//
+//                            // Process the response as needed
+//                            final String jsonResponse = response.toString();
+//
+//                            // Perform UI operations on the main thread if needed
+//                            runOnUiThread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    // Handle the response in the UI thread
+//                                    // Example: Update UI elements with jsonResponse
+//                                }
+//                            });
+//                        }
+//                    }
+//
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }).start();
+//    }
 }
 

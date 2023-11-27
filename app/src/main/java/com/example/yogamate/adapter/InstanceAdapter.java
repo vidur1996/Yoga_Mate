@@ -78,11 +78,11 @@ public class InstanceAdapter extends RecyclerView.Adapter<InstanceAdapter.ViewHo
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_teacher = (TextView) itemView.findViewById(R.id.tv_in_teacher);
-            tv_days = (TextView) itemView.findViewById(R.id.tv_in_date);
-            tv_desc = (TextView) itemView.findViewById(R.id.tv_in_desc);
-            delete = (ImageView) itemView.findViewById(R.id.img_in_delete);
-            edit = (ImageView) itemView.findViewById(R.id.img_in_edit);
+            tv_teacher = itemView.findViewById(R.id.tv_in_teacher);
+            tv_days = itemView.findViewById(R.id.tv_in_date);
+            tv_desc = itemView.findViewById(R.id.tv_in_desc);
+            delete = itemView.findViewById(R.id.img_in_delete);
+            edit = itemView.findViewById(R.id.img_in_edit);
 
         }
     }

@@ -79,11 +79,11 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_name = (TextView) itemView.findViewById(R.id.tv_course_name);
-            tv_days = (TextView) itemView.findViewById(R.id.tv_course_day);
-            tv_type = (TextView) itemView.findViewById(R.id.tv_course_type);
-            delete = (ImageView) itemView.findViewById(R.id.img_cs_delete);
-            details = (ConstraintLayout) itemView.findViewById(R.id.layout_course);
+            tv_name = itemView.findViewById(R.id.tv_course_name);
+            tv_days = itemView.findViewById(R.id.tv_course_day);
+            tv_type = itemView.findViewById(R.id.tv_course_type);
+            delete = itemView.findViewById(R.id.img_cs_delete);
+            details = itemView.findViewById(R.id.layout_course);
 
         }
     }

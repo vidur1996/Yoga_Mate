@@ -78,7 +78,7 @@ public class ViewCourseActivity extends AppCompatActivity implements CourseAdapt
             }
         });
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_Course);
+        RecyclerView recyclerView = findViewById(R.id.rv_Course);
         adapter = new CourseAdapter(list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -89,7 +89,7 @@ public class ViewCourseActivity extends AppCompatActivity implements CourseAdapt
     @Override
     public void onDetailsClick(Course course, int index) {
         Intent in = new Intent(getApplicationContext(),CourseDetailActivity.class);
-        in.putExtra("course", (Serializable) course);
+        in.putExtra("course", course);
         startActivity(in);
     }
 

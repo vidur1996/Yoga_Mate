@@ -56,7 +56,7 @@ public class CourseDetailActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent in = new Intent(getApplicationContext(),EditCourseActivity.class);
-                    in.putExtra("course", (Serializable) cs);
+                    in.putExtra("course", cs);
                     startActivity(in);
                 }
             });
