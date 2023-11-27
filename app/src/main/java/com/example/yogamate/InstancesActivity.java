@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.yogamate.AddInstanceActivity;
 import com.example.yogamate.R;
@@ -31,22 +32,25 @@ import java.util.ArrayList;
 
 public class InstancesActivity extends AppCompatActivity implements InstanceAdapter.onClickInstanceAdapter {
     ImageView img_add_inst;
-
+    TextView tv_title;
     DatabaseReference databaseReference;
     ArrayList<Instance> list = new ArrayList<Instance>();
     InstanceAdapter adapter;
-    String courseId,courseName,dayOfweek;
+    String courseId,courseName,dayOfweek,title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instances);
         img_add_inst = findViewById(R.id.img_add_instance);
+        tv_title = findViewById(R.id.title_ad_instance);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             courseId = extras.getString("course_id");
             courseName = extras.getString("course_name");
             dayOfweek = extras.getString("day");
+            title = extras.getString("title");
         }
+        tv_title.setText(title);
     //    SetRecycler();
 
 

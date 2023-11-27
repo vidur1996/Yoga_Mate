@@ -30,7 +30,7 @@ public class CourseDetailActivity extends AppCompatActivity {
 
     Course cs = new Course();
     DatabaseReference databaseReference;
-    TextView cdName,cdDay,cdTime,cdCapacity,cdPrice,cdType,cdRoom,cdMat,cdDesc;
+    TextView cdName,cdDay,cdTime,cdCapacity,cdPrice,cdType,cdRoom,cdMat,cdDesc,cd_title;
     ImageView edit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         cdMat=  findViewById(R.id.tv_cd_mat);
         cdDesc =  findViewById(R.id.tv_cd_desc);
         edit = findViewById(R.id.img_cd_edit);
+        cd_title = findViewById(R.id.tv_cd_title);
         getInstanceList(cs.getId());
         displayDate();
 
@@ -73,6 +74,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         cdRoom.setText(cs.getRoomNo());
         cdMat.setText(cs.getYogaMat());
         cdDesc.setText(cs.getDescription());
+        cd_title.setText(cs.getClassName());
     }
 
     public void getInstanceList(int id){

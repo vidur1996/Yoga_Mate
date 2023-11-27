@@ -116,6 +116,7 @@ public class EditCourseActivity extends AppCompatActivity {
                 in.putExtra("course_id",String.valueOf(cs.getId()));
                 in.putExtra("course_name",cs.getClassName());
                 in.putExtra("day",cs.getClassDay());
+                in.putExtra("title","Update Instance");
                 startActivity(in);
             }
         });

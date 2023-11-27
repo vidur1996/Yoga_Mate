@@ -254,7 +254,7 @@ public class AddCourseActivity extends AppCompatActivity {
         }
         new MaterialAlertDialogBuilder(this)
                 .setTitle(" successFul")
-                .setMessage("Data saved successfully,  /n now lets add instance  ")
+                .setMessage("Data saved successfully, now lets add instance  ")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -263,6 +263,7 @@ public class AddCourseActivity extends AppCompatActivity {
                         it.putExtra("course_name", cs.getClassName());
                         it.putExtra("course_id", String.valueOf(cs.getId()));
                         it.putExtra("day", cs.getClassDay());
+                        it.putExtra("title","Add Instance");
                         startActivity(it);
 
                     }

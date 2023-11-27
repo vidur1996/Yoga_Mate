@@ -5,14 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InstancesActivity">
+
+    <TextView
+        android:id="@+id/title_ad_instance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16pt"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Add Instances"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_instance"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_ad_instance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="14dp"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/img_add_instance"
