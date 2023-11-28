@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Course implements Serializable {
     String className;
-    String classTime;
-    String classDay;
+    String timeOfDay;
+    String dayOfWeek;
     int classCapacity;
     double classFees;
     String classType;
@@ -18,12 +18,20 @@ public class Course implements Serializable {
 
     }
 
-    public String getClassDay() {
-        return classDay;
+    public String getTimeOfDay() {
+        return timeOfDay;
     }
 
-    public void setClassDay(String classDay) {
-        this.classDay = classDay;
+    public void setTimeOfDay(String timeOfDay) {
+        this.timeOfDay = timeOfDay;
+    }
+
+    public String getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public void setDayOfWeek(String dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
 
     public int getId() {
@@ -42,13 +50,7 @@ public class Course implements Serializable {
         this.className = className;
     }
 
-    public String getClassTime() {
-        return classTime;
-    }
 
-    public void setClassTime(String classTime) {
-        this.classTime = classTime;
-    }
 
     public int getClassCapacity() {
         return classCapacity;

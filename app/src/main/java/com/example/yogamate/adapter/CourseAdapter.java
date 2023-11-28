@@ -36,7 +36,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         final Course myListData = courseset.get(position);
         holder.tv_name.setText(myListData.getClassName());
-        holder.tv_days.setText(myListData.getClassDay());
+        holder.tv_days.setText(myListData.getDayOfWeek());
         holder.tv_type.setText(myListData.getClassType());
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override

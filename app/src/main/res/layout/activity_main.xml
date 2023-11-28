@@ -86,6 +86,7 @@
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
         android:text="View Student email"
+        android:visibility="invisible"
         android:textColor="#FFFFFF"
         android:textSize="8pt"
         app:layout_constraintEnd_toEndOf="parent"

@@ -66,8 +66,8 @@ public class CourseDetailActivity extends AppCompatActivity {
 
     public void displayDate(){
         cdName.setText(cs.getClassName());
-        cdDay.setText(cs.getClassDay());
-        cdTime.setText(cs.getClassTime());
+        cdDay.setText(cs.getDayOfWeek());
+        cdTime.setText(cs.getTimeOfDay());
         cdCapacity.setText(String.valueOf(cs.getClassCapacity()));
         cdPrice.setText(String.valueOf(cs.getClassFees()));
         cdType.setText(cs.getClassType());

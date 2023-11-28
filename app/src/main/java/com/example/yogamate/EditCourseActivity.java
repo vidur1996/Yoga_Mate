@@ -88,13 +88,13 @@ public class EditCourseActivity extends AppCompatActivity {
                 }
                 else {
                     cs.setClassName(cName.getText().toString().trim());
-                    cs.setClassTime(cTime.getText().toString().trim());
+                    cs.setTimeOfDay(cTime.getText().toString().trim());
                     cs.setClassCapacity(Integer.parseInt(cCapacity.getText().toString().trim()));
                     cs.setClassFees(Double.parseDouble(cPrice.getText().toString().trim()));
                     cs.setRoomNo(cRoom.getText().toString().trim());
                     cs.setDescription(cDesc.getText().toString().trim());
                     cs.setClassType(yTypes.getSelectedItem().toString().trim());
-                    cs.setClassDay(buttonText.trim());
+                    cs.setDayOfWeek(buttonText.trim());
                     saveData(cs);
                     // boolean responce =  saveData(cs);
 
@@ -115,7 +115,7 @@ public class EditCourseActivity extends AppCompatActivity {
                 Intent in = new Intent(getApplicationContext(), InstancesActivity.class);
                 in.putExtra("course_id",String.valueOf(cs.getId()));
                 in.putExtra("course_name",cs.getClassName());
-                in.putExtra("day",cs.getClassDay());
+                in.putExtra("day",cs.getDayOfWeek());
                 in.putExtra("title","Update Instance");
                 startActivity(in);
             }
@@ -130,8 +130,8 @@ public class EditCourseActivity extends AppCompatActivity {
     }
     public void displayData(){
         cName.setText(cs.getClassName());
-        setDayButton(cs.getClassDay());
-        cTime.setText(cs.getClassTime());
+        setDayButton(cs.getDayOfWeek());
+        cTime.setText(cs.getTimeOfDay());
         cCapacity.setText(String.valueOf(cs.getClassCapacity()));
         cPrice.setText(String.valueOf(cs.getClassFees()));
         setSpinnerSelected(cs.getClassType());
@@ -149,15 +149,13 @@ public class EditCourseActivity extends AppCompatActivity {
     }
 
     public void setDayButton(String day){
-        if(day.equals( "Monday")){
+        if(day.trim().equals( "Monday")){
                 toggleGroup.check(R.id.ecbtn_mon);
             }
         if(day.equals( "Tuesday")){
         toggleGroup.check(R.id.ecbtn_tue);
             }
-        if(day.equals( "Tuesday")){
-            toggleGroup.check(R.id.ecbtn_tue);
-            }
+
         if(day.equals( "Wednesday")){
             toggleGroup.check(R.id.ecbtn_wed);
             }

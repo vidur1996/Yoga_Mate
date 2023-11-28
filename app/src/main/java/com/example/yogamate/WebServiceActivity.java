@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.yogamate.model.Instance;
 import com.example.yogamate.model.SaveCourse;
 import com.example.yogamate.model.WebService;
+import com.example.yogamate.model.webCourse;
+import com.example.yogamate.model.webInstance;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -27,12 +29,23 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
+import java.net.ProtocolException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 public class WebServiceActivity extends AppCompatActivity {
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -40,7 +53,7 @@ public class WebServiceActivity extends AppCompatActivity {
     EditText et_username;
     DatabaseReference databaseReference;
     WebService wb = new WebService();
-    ArrayList<SaveCourse> list = new ArrayList<SaveCourse>();
+    ArrayList<webCourse> list = new ArrayList<webCourse>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +68,7 @@ public class WebServiceActivity extends AppCompatActivity {
                     showAlert("Error", "Please enter the user id");
                 } else {
                     saveWebService(et_username.getText().toString().trim());
+                    //createJson();
                 }
             }
         });
@@ -82,17 +96,17 @@ public class WebServiceActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
                 if (snapshot.exists()) {
-                    SaveCourse value = snapshot.getValue(SaveCourse.class);
-                    ArrayList<Instance> inlist = new ArrayList<>();
+                    webCourse value = snapshot.getValue(webCourse.class);
+                    ArrayList<webInstance> inlist = new ArrayList<>();
 
                     // Check if the "instances" node exists in the snapshot
                     DataSnapshot instancesSnapshot = snapshot.child("instance");
                     if (instancesSnapshot.exists()) {
                         for (DataSnapshot instanceSnapshot : instancesSnapshot.getChildren()) {
-                            Instance in = instanceSnapshot.getValue(Instance.class);
+                            webInstance in = instanceSnapshot.getValue(webInstance.class);
                             inlist.add(in);
                         }
-                        value.setInstances(inlist);
+                        value.setClassList(inlist);
                     }
 
                     list.add(value);
@@ -126,11 +140,19 @@ public class WebServiceActivity extends AppCompatActivity {
     }
 
     public void createJson() {
-        wb.setDetailList(list);
-        Gson gson = new GsonBuilder().serializeNulls().create();
+      wb.setDetailList(list);
+       Gson gson = new GsonBuilder().serializeNulls().create();
         String outJson = gson.toJson(wb);
         Log.e("json :", outJson);
-        sendJsonAndGetResponse(outJson);
+        String test = "{\"userId\":\"wm123\"," +
+                "\"detailList\":[" +
+                "{\"dayOfWeek\":\"Tuesday\", \"timeOfDay\":\"18:00\", \"classList\":[" +
+                "{\"date\":\"24/10/2023\", \"teacher\":\"Russell\"}," +
+                "{\"date\":\"31/10/2023\", \"teacher\":\"Joe\"}]} " +
+                "]}";
+       // Log.e("json :", test);
+       // sendJsonAndGetResponse(test);
+        save(outJson);
     }
 
     private void sendJsonAndGetResponse(String jsonData) {
@@ -139,7 +161,7 @@ public class WebServiceActivity extends AppCompatActivity {
             public void run() {
                 try {
                     URL url = new URL("https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cw/SubmitClasses");
-                    //trustAllHosts();
+                    trustAllHosts();
 
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");
@@ -148,7 +170,8 @@ public class WebServiceActivity extends AppCompatActivity {
 
                     try (OutputStream os = connection.getOutputStream()) {
                         byte[] input = jsonData.getBytes(StandardCharsets.UTF_8);
-                        os.write(input, 0, input.length);
+                      //  os.write(input, 0, input.length);
+                        os.write(input);
                     }
 
                     int responseCode = connection.getResponseCode();
@@ -174,6 +197,7 @@ public class WebServiceActivity extends AppCompatActivity {
                                     try {
                                         JSONObject jsonObject = new JSONObject(jsonResponse);
                                         String message = jsonObject.getString("message");
+                                        Log.e("OUT",jsonResponse);
                                         showAlert("Response", message);
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -191,4 +215,142 @@ public class WebServiceActivity extends AppCompatActivity {
         }).start();
     }
 
+    public void save(  String data){
+        try {
+            URL pageURL = new URL("https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cw/SubmitClasses");
+            trustAllHosts();
+            HttpURLConnection con = (HttpURLConnection)pageURL.openConnection();
+
+            String jsonString = data;
+
+            JsonThread myTask = new JsonThread(this, con, jsonString);
+            Thread t1 = new Thread(myTask, "JSON Thread");
+            t1.start();
+
+        } catch (IOException e) { e.printStackTrace(); }
+    }
+
+
+
+
+
+
+
+    private void trustAllHosts() {
+        // Create a trust manager that does not validate certificate chains
+        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                return new java.security.cert.X509Certificate[] {};
+            }
+
+            public void checkClientTrusted(X509Certificate[] chain,
+                                           String authType) throws CertificateException {
+            }
+
+            public void checkServerTrusted(X509Certificate[] chain,
+                                           String authType) throws CertificateException {
+            }
+        } };
+
+        // Install the all-trusting trust manager
+        try {
+            SSLContext sc = SSLContext.getInstance("TLS");
+            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+            HttpsURLConnection
+                    .setDefaultSSLSocketFactory(sc.getSocketFactory());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    class JsonThread implements Runnable
+    {
+        private AppCompatActivity activity;
+        private HttpURLConnection con;
+        private String jsonPayLoad;
+
+        public JsonThread(AppCompatActivity activity, HttpURLConnection con, String jsonPayload)
+        {
+            this.activity = activity;
+            this.con = con;
+            this.jsonPayLoad = jsonPayload;
+        }
+
+        @Override
+        public void run()
+        {
+            String response = "";
+            if (prepareConnection()) {
+                response = postJson();
+            } else {
+                response = "Error preparing the connection";
+            }
+            showResult(response);
+        }
+
+
+        private void showResult(String response) {
+            activity.runOnUiThread(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    //String page = generatePage(response);
+                    //((MainActivity)activity).browser.loadData(page, "text/html", "UTF-8");
+                    Log.e("RESPNSE",response);
+                }
+            });
+        }
+
+        private String postJson() {
+            String response = "";
+            try {
+                String postParameters = "jsonpayload=" + URLEncoder.encode(jsonPayLoad, "UTF-8");
+                con.setFixedLengthStreamingMode(postParameters.getBytes().length);
+                PrintWriter out = new PrintWriter(con.getOutputStream());
+                out.print(postParameters);
+                out.close();
+                int responseCode = con.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    response = readStream(con.getInputStream());
+                } else {
+                    response = "Error contacting server: " + responseCode;
+                }
+            } catch (Exception e) {
+                response = e.toString();//"Error executing code";
+            }
+            return response;
+        }
+
+        private String readStream(InputStream in) {
+            StringBuilder sb = new StringBuilder();
+            try(BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
+                String nextLine = "";
+                while ((nextLine = reader.readLine()) != null) {
+                    sb.append(nextLine);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return sb.toString();
+        }
+
+        private String generatePage(String content) {
+            return "<html><body><p>" + content + "</p></body></html>";
+        }
+
+
+        private boolean prepareConnection() {
+            try {
+                con.setDoOutput(true);
+                con.setRequestMethod("POST");
+                con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                return true;
+
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            }
+            return false;
+        }
+    }
 }

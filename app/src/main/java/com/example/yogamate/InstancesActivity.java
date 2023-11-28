@@ -172,5 +172,10 @@ public class InstancesActivity extends AppCompatActivity implements InstanceAdap
         SetRecycler();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent in = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(in);
+    }
 }

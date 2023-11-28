@@ -151,13 +151,13 @@ public class AddCourseActivity extends AppCompatActivity {
                     else {
                         cs.setId(id);
                         cs.setClassName(cName.getText().toString().trim());
-                        cs.setClassTime(cTime.getText().toString().trim());
+                        cs.setTimeOfDay(cTime.getText().toString().trim());
                         cs.setClassCapacity(Integer.parseInt(cCapacity.getText().toString().trim()));
                         cs.setClassFees(Double.parseDouble(cPrice.getText().toString().trim()));
                         cs.setRoomNo(cRoom.getText().toString().trim());
                         cs.setDescription(cDesc.getText().toString().trim());
                         cs.setClassType(yTypes.getSelectedItem().toString().trim());
-                        cs.setClassDay(buttonText.trim());
+                        cs.setDayOfWeek(buttonText.trim());
                         cs.setYogaMat(mat);
                         saveData(cs);
 
@@ -262,7 +262,7 @@ public class AddCourseActivity extends AppCompatActivity {
                         Intent it = new Intent(getApplicationContext(), InstancesActivity.class);
                         it.putExtra("course_name", cs.getClassName());
                         it.putExtra("course_id", String.valueOf(cs.getId()));
-                        it.putExtra("day", cs.getClassDay());
+                            it.putExtra("day", cs.getDayOfWeek());
                         it.putExtra("title","Add Instance");
                         startActivity(it);
 
