@@ -144,78 +144,12 @@ public class WebServiceActivity extends AppCompatActivity {
        Gson gson = new GsonBuilder().serializeNulls().create();
         String outJson = gson.toJson(wb);
         Log.e("json :", outJson);
-        String test = "{\"userId\":\"wm123\"," +
-                "\"detailList\":[" +
-                "{\"dayOfWeek\":\"Tuesday\", \"timeOfDay\":\"18:00\", \"classList\":[" +
-                "{\"date\":\"24/10/2023\", \"teacher\":\"Russell\"}," +
-                "{\"date\":\"31/10/2023\", \"teacher\":\"Joe\"}]} " +
-                "]}";
-       // Log.e("json :", test);
-       // sendJsonAndGetResponse(test);
+       
         save(outJson);
     }
 
-    private void sendJsonAndGetResponse(String jsonData) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL("https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cw/SubmitClasses");
-                    trustAllHosts();
-
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("POST");
-                    connection.setRequestProperty("Content-Type", "application/json");
-                    connection.setDoOutput(true);
-
-                    try (OutputStream os = connection.getOutputStream()) {
-                        byte[] input = jsonData.getBytes(StandardCharsets.UTF_8);
-                      //  os.write(input, 0, input.length);
-                        os.write(input);
-                    }
-
-                    int responseCode = connection.getResponseCode();
-
-                    // Handle the response code and read the response
-                    if (responseCode == HttpURLConnection.HTTP_OK) {
-                        try (BufferedReader reader = new BufferedReader(
-                                new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
-
-                            StringBuilder response = new StringBuilder();
-                            String line;
-                            while ((line = reader.readLine()) != null) {
-                                response.append(line);
-                            }
-
-
-                            final String jsonResponse = response.toString();
-
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-
-                                    try {
-                                        JSONObject jsonObject = new JSONObject(jsonResponse);
-                                        String message = jsonObject.getString("message");
-                                        Log.e("OUT",jsonResponse);
-                                        showAlert("Response", message);
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                        }
-                    }
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-
-                }
-            }
-        }).start();
-    }
-
-    public void save(  String data){
+    //code obtained form lecture notes on connectivity
+       public void save(  String data){
         try {
             URL pageURL = new URL("https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cw/SubmitClasses");
             trustAllHosts();
@@ -231,11 +165,7 @@ public class WebServiceActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
+//code obtained form lecture notes on connectivity
     private void trustAllHosts() {
         // Create a trust manager that does not validate certificate chains
         TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
@@ -263,6 +193,7 @@ public class WebServiceActivity extends AppCompatActivity {
         }
     }
 
+//code obtained form lecture notes on connectivity
     class JsonThread implements Runnable
     {
         private AppCompatActivity activity;
@@ -288,7 +219,7 @@ public class WebServiceActivity extends AppCompatActivity {
             showResult(response);
         }
 
-
+//code obtained form lecture notes on connectivity
         private void showResult(String response) {
             activity.runOnUiThread(new Runnable()
             {
@@ -302,6 +233,7 @@ public class WebServiceActivity extends AppCompatActivity {
             });
         }
 
+//code obtained form lecture notes on connectivity
         private String postJson() {
             String response = "";
             try {
@@ -322,6 +254,7 @@ public class WebServiceActivity extends AppCompatActivity {
             return response;
         }
 
+//code obtained form lecture notes on connectivity
         private String readStream(InputStream in) {
             StringBuilder sb = new StringBuilder();
             try(BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
@@ -335,11 +268,9 @@ public class WebServiceActivity extends AppCompatActivity {
             return sb.toString();
         }
 
-        private String generatePage(String content) {
-            return "<html><body><p>" + content + "</p></body></html>";
-        }
 
 
+//code obtained form lecture notes on connectivity
         private boolean prepareConnection() {
             try {
                 con.setDoOutput(true);
