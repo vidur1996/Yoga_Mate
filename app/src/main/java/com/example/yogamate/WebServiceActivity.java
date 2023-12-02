@@ -1,6 +1,7 @@
 package com.example.yogamate;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.yogamate.model.Instance;
+import com.example.yogamate.model.Response;
 import com.example.yogamate.model.SaveCourse;
 import com.example.yogamate.model.WebService;
 import com.example.yogamate.model.webCourse;
@@ -48,7 +50,6 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 public class WebServiceActivity extends AppCompatActivity {
-    private final Handler handler = new Handler(Looper.getMainLooper());
     Button btn_upload;
     EditText et_username;
     DatabaseReference databaseReference;
@@ -65,10 +66,10 @@ public class WebServiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (et_username.getText().toString().trim().equals("")) {
-                    showAlert("Error", "Please enter the user id");
+                    showAlert("Error", "Please enter the user id",false);
                 } else {
                     saveWebService(et_username.getText().toString().trim());
-                    //createJson();
+
                 }
             }
         });
@@ -76,14 +77,18 @@ public class WebServiceActivity extends AppCompatActivity {
 
     }
 
-    public void showAlert(String title, String msg) {
+    public void showAlert(String title, String msg,boolean onMove) {
         new MaterialAlertDialogBuilder(this)
                 .setTitle(title)
                 .setMessage(msg)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                            if (onMove){
+                                Intent exit = new Intent(getApplicationContext(),MainActivity.class);
+                                startActivity(exit);
 
+                            }
                     }
                 }).show();
     }
@@ -226,9 +231,11 @@ public class WebServiceActivity extends AppCompatActivity {
                 @Override
                 public void run()
                 {
-                    //String page = generatePage(response);
-                    //((MainActivity)activity).browser.loadData(page, "text/html", "UTF-8");
-                    Log.e("RESPNSE",response);
+                    Gson gson = new Gson();
+                    Response rs = gson.fromJson(response, Response.class);
+                    showAlert(rs.getUploadResponseCode().toString(),
+                            rs.getMessage(),
+                            rs.getUploadResponseCode().toString().equals("SUCCESS"));
                 }
             });
         }
